@@ -1,27 +1,28 @@
 import { useState } from 'react';
 import { assets } from '../assets/frontend_assets/assets';
 import { Link, NavLink } from 'react-router-dom';
+
 const Navbar = () => {
    const [openMenu, setOpenMenu] = useState(false);
    return (
       <div className='flex items-center justify-between py-5 font-medium'>
          <img src={assets.logo} alt='' />
          <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
-            <NavLink to='/' className=' flex flex-col items-center gap-1'>
+            <NavLink to='/' className='flex flex-col items-center gap-1 relative group'>
                <p>HOME</p>
-               <hr className='w-2/4 border-none h-[1.5px] bg-gray-700' />
+               <div className='absolute bottom-0 left-0 w-0 h-[1.5px] bg-gray-700 group-hover:w-full transition-all duration-200'></div>
             </NavLink>
-            <NavLink to='/collection' className=' flex flex-col items-center gap-1'>
+            <NavLink to='/collection' className='flex flex-col items-center gap-1 relative group'>
                <p>COLLECTION</p>
-               <hr className='w-2/4 border-none h-[1.5px] bg-gray-700' />
+               <div className='absolute bottom-0 left-0 w-0 h-[1.5px] bg-gray-700 group-hover:w-full transition-all duration-200'></div>
             </NavLink>
-            <NavLink to='/about' className=' flex flex-col items-center gap-1'>
+            <NavLink to='/about' className='flex flex-col items-center gap-1 relative group'>
                <p>ABOUT</p>
-               <hr className='w-2/4 border-none h-[1.5px] bg-gray-700' />
+               <div className='absolute bottom-0 left-0 w-0 h-[1.5px] bg-gray-700 group-hover:w-full transition-all duration-200'></div>
             </NavLink>
-            <NavLink to='/contact' className=' flex flex-col items-center gap-1'>
+            <NavLink to='/contact' className='flex flex-col items-center gap-1 relative group'>
                <p>CONTACT</p>
-               <hr className='w-2/4 border-none h-[1.5px] bg-gray-700' />
+               <div className='absolute bottom-0 left-0 w-0 h-[1.5px] bg-gray-700 group-hover:w-full transition-all duration-200'></div>
             </NavLink>
          </ul>
          <div className='flex items-center gap-6'>
@@ -42,7 +43,6 @@ const Navbar = () => {
             </Link>
             <img onClick={() => setOpenMenu(!openMenu)} src={assets.menu_icon} className='cursor-pointer w-5 sm:hidden' alt='' />
          </div>
-
          {/* mobile menu */}
          <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${openMenu ? 'w-full' : 'w-0'}`}>
             <div className='flex flex-col text-gray-600'>
@@ -50,16 +50,16 @@ const Navbar = () => {
                   <img src={assets.dropdown_icon} alt='' className='h-4 rotate-180 cursor-pointer' />
                   <p className='text-gray-500'>Back</p>
                </div>
-               <NavLink className='py-2 pl-6 border text-gray-500' to='/'>
+               <NavLink onClick={() => setOpenMenu(false)} className='py-2 pl-6 border text-gray-500' to='/'>
                   Home
                </NavLink>
-               <NavLink className='py-2 pl-6 borde text-gray-500' to='/collection'>
+               <NavLink onClick={() => setOpenMenu(false)} className='py-2 pl-6 borde text-gray-500' to='/collection'>
                   Collection
                </NavLink>
-               <NavLink className='py-2 pl-6 border text-gray-500' to='/about'>
+               <NavLink onClick={() => setOpenMenu(false)} className='py-2 pl-6 border text-gray-500' to='/about'>
                   About
                </NavLink>
-               <NavLink className='py-2 pl-6 border text-gray-500' to='/contact'>
+               <NavLink onClick={() => setOpenMenu(false)} className='py-2 pl-6 border text-gray-500' to='/contact'>
                   Contact
                </NavLink>
             </div>
